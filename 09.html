@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>玩家代号提交表单</title>
+    <title>UDP 信号发送器</title>
 </head>
 <body>
-    <h1>填写您的玩家代号</h1>
-    <form action="https://baidu.com" method="post">
-        <label for="playerID">玩家代号（英文）:</label>
-        <input type="text" id="playerID" name="playerID" required>
-        <br><br>
-        <input type="submit" value="提交">
-    </form>
+<h1>发送 UDP 信号</h1>
+<form id="udpForm">
+    <label for="message">消息：</label>
+    <input type="text" id="message" name="message" required>
+    <button type="submit">发送</button>
+</form>
+<div id="result"></div>
+
+<script>
+    // 处理表单提交事件
+    document.getElementById('udpForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const message = document.getElementById('message').value;
+
+        try {
+            // 发送UDP消息到服务器
+            const response = await fetch('/send-udp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+
+            // 获取并显示服务器返回的结果
+            const result = await response.text();
+            document.getElementById('result').innerText = result;
+        } catch (error) {
+            // 显示错误信息
+            document.getElementById('result').innerText = '错误: ' + error.message;
+        }
+    });
+</script>
 </body>
 </html>
