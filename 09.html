@@ -7,18 +7,63 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* 使内容居中垂直 */
-            margin: 0; /* 去掉默认的margin */
-            font-family: Arial, sans-serif; /* 设置字体 */
-            background-color: #f4f4f4; /* 设置背景颜色 */
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('./static/picture/di.png');
+            background-size: cover;
+            background-position: center;
+            font-size: 1.5em;
+            color: #333; /* 更改字体颜色 */
         }
         #udpForm {
-            background: white; /* 表单背景颜色 */
-            padding: 20px; /* 内边距 */
-            border-radius: 5px; /* 边角圆滑 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            background: rgba(255, 255, 255, 0.9); /* 使表单背景稍微透明 */
+            padding: 40px;
+            border-radius: 10px; /* 增加边角圆滑度 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 更深的阴影效果 */
+            width: 300px; /* 设置表单宽度 */
+            text-align: center; /* 中心对齐文本 */
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px; /* 增加标题与表单的间距 */
+            color: #2c3e50; /* 改变标题颜色 */
+        }
+        label {
+            margin-top: 10px; /* 增加标签与输入框间的间距 */
+            display: block;
+            font-size: 1.2em;
+            color: #34495e; /* 标签颜色 */
+        }
+        input {
+            width: 100%; /* 输入框宽度占满 */
+            padding: 10px; /* 增加内边距 */
+            margin-top: 5px; /* 输入框与标签间的间距 */
+            border: 1px solid #bdc3c7; /* 输入框边框颜色 */
+            border-radius: 5px; /* 圆角边框 */
+            font-size: 1em; /* 输入框字体大小 */
+        }
+        button {
+            margin-top: 20px; /* 按钮与输入框之间的间距 */
+            padding: 10px 15px; /* 增加按钮内边距 */
+            border: none; /* 移除默认边框 */
+            border-radius: 5px; /* 圆角边框 */
+            background-color: #3498db; /* 按钮背景色 */
+            color: white; /* 按钮文字颜色 */
+            font-size: 1.2em;
+            cursor: pointer; /* 鼠标悬停时显示手型 */
+            transition: background-color 0.3s; /* 添加过渡效果 */
+        }
+        button:hover {
+            background-color: #2980b9; /* 鼠标悬停时更改背景色 */
+        }
+        #result {
+            margin-top: 20px; /* 增加结果显示区与表单之间的间距 */
+            font-size: 1.2em;
+            color: red; /* 错误信息颜色 */
         }
     </style>
 </head>
