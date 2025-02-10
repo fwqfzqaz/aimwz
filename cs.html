@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Whitelist Checker</title>
+</head>
+<body>
+<h1>Minecraft Whitelist Checker</h1>
+<input type="text" id="playerName" placeholder="Enter your Minecraft username">
+<button onclick="checkWhitelist()">Check Whitelist</button>
+<p id="response"></p>
+
+<script>
+    function checkWhitelist() {
+        const playerName = document.getElementById('playerName').value;
+        if (!playerName) {
+            alert("玩家名称不能为空");
+            return;
+        }
+
+        const serverURL = `http://127.0.0.1:8080/whitelist?player=${encodeURIComponent(playerName)}`;
+        fetch(serverURL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('response').innerText = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('response').innerText = '连接服务器失败';
+            });
+    }
+</script>
+</body>
+</html>
