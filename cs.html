@@ -18,22 +18,24 @@
                 alert("玩家名称不能为空");
                 return;
             }
-            
-            const serverURL = `http://103.85.86.51:15001/whitelist?player=${encodeURIComponent(playerName)}`;
-            fetch(serverURL)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('response').innerText = data;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('response').innerText = '连接服务器失败';
-                });
+
+            // 使用 WSS 协议（需服务器支持 HTTPS）
+            const ws = new WebSocket('wss://your_domain.com');
+
+            ws.onopen = function() {
+                ws.send(playerName);
+            };
+
+            ws.onmessage = function(event) {
+                document.getElementById('response').innerText = event.data;
+                ws.close();
+            };
+
+            ws.onerror = function(error) {
+                console.error('WebSocket error:', error);
+                document.getElementById('response').innerText = '连接服务器失败';
+                ws.close();
+            };
         }
     </script>
 </body>
