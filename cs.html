@@ -3,39 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Whitelist Checker</title>
+    <title>Minecraft 白名单检查器</title>
 </head>
 <body>
-    <h1>Minecraft Whitelist Checker</h1>
-    <input type="text" id="playerName" placeholder="Enter your Minecraft username">
-    <button onclick="checkWhitelist()">Check Whitelist</button>
-    <p id="response"></p>
+<h1>Minecraft 白名单检查器</h1>
+<input type="text" id="playerName" placeholder="输入你的 Minecraft 用户名">
+<button onclick="checkWhitelist()">检查白名单</button>
+<p id="response"></p>
 
-    <script>
-        function checkWhitelist() {
-            const playerName = document.getElementById('playerName').value;
-            if (!playerName) {
-                alert("玩家名称不能为空");
-                return;
-            }
+<script>
+    function checkWhitelist() {
+        const playerNameInput = document.getElementById('playerName');
+        const playerName = playerNameInput.value.trim();
+        const responseParagraph = document.getElementById('response');
 
-            const ws = new WebSocket('wss://play.simpfun.cn:29703');
-
-            ws.onopen = function() {
-                ws.send(playerName);
-            };
-
-            ws.onmessage = function(event) {
-                document.getElementById('response').innerText = event.data;
-                ws.close();
-            };
-
-            ws.onerror = function(error) {
-                console.error('WebSocket error:', error);
-                document.getElementById('response').innerText = '连接服务器失败';
-                ws.close();
-            };
+        if (!playerName) {
+            responseParagraph.textContent = '请输入有效的用户名。';
+            return;
         }
-    </script>
+
+        const ws = new WebSocket('ws://play.simpfun.cn:29703');
+
+        // 连接建立时发送请求
+        ws.onopen = () => {
+            ws.send(playerName);
+        };
+
+        // 接收响应
+        ws.onmessage = (event) => {
+            responseParagraph.textContent = `响应: ${event.data}`;
+            console.log('响应:', event.data);
+            ws.close();
+        };
+
+        // 错误处理
+        ws.onerror = (error) => {
+            console.error('WebSocket 错误:', error);
+            responseParagraph.textContent = '无法连接到服务器，请稍后再试。';
+        };
+
+        // 连接关闭时的处理
+        ws.onclose = () => {
+            console.log('WebSocket 连接已关闭');
+        };
+    }
+</script>
 </body>
 </html>
