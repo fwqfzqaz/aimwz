@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队成员展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+        }
+
+        .member-name {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .member-bio {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .profile-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .profile-link:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 600px) {
+            .members-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .member-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>我们的团队</h1>
+        
+        <div class="members-grid">
+            <!-- 重复以下区块20次，替换对应信息 -->
+            <div class="member-card">
+                <img src="avatar-placeholder.jpg" alt="成员头像" class="member-avatar">
+                <h2 class="member-name">张三</h2>
+                <p class="member-bio">前端开发工程师</p>
+                <a href="profile1.html" class="profile-link">查看详情</a>
+            </div>
+
+            <div class="member-card">
+                <img src="avatar-placeholder.jpg" alt="成员头像" class="member-avatar">
+                <h2 class="member-name">李四</h2>
+                <p class="member-bio">UI设计师</p>
+                <a href="profile2.html" class="profile-link">查看详情</a>
+            </div>
+
+            <!-- 继续添加其他18个成员 -->
+            <!-- 每个成员的profile链接需要对应实际的页面地址 -->
+            
+        </div>
+    </div>
+</body>
+</html>
