@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 张三</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        /* 头部区域 */
+        .profile-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .position {
+            font-size: 1.5rem;
+            color: #e5e7eb;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 内容区域 */
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #6366f1;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #6366f1;
+            padding-left: 1rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h3 {
+            color: #4b5563;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 联系方式 */
+        .contact-info {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: inline-block;
+            margin: 0 1rem;
+            color: #4b5563;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-header {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="profile-header">
+            <img src="avatar.jpg" alt="张三" class="avatar">
+            <h1>张三</h1>
+            <p class="position">全栈工程师</p>
+        </header>
+
+        <div class="content-section">
+            <div class="card">
+                <h2>个人简介</h2>
+                <p>5年全栈开发经验，精通JavaScript生态体系，熟悉React、Vue等前端框架和Node.js后端开发。拥有丰富的云原生应用开发经验，热爱技术创新和开源社区。</p>
+            </div>
+
+            <div class="card">
+                <h2>工作经历</h2>
+                <div class="experience-item">
+                    <h3>高级软件工程师 | ABC科技 (2019-至今)</h3>
+                    <p>领导开发团队完成多个企业级SaaS应用，主导微服务架构设计，系统日活用户超过50万</p>
+                </div>
+                <div class="experience-item">
+                    <h3>全栈开发工程师 | XYZ科技 (2016-2019)</h3>
+                    <p>负责前后端功能开发与优化，成功将系统响应速度提升40%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>技术栈</h2>
+                <div class="skills">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">GraphQL</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>教育背景</h2>
+                <div class="experience-item">
+                    <h3>计算机科学与技术 硕士</h3>
+                    <p>中国科技大学 (2014-2016)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i> zhangsan@example.com
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i> +86 138-1234-5678
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i> github.com/zhangsan
+            </div>
+        </div>
+    </div>
+</body>
+</html>
